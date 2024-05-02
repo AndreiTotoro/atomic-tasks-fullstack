@@ -1,5 +1,6 @@
-import React from "react";
+import { createDummyUser } from "@/lib/actions/user.actions";
+import React, { useEffect } from "react";
 
-export default function page() {
+export default async function page() {
   return <div className="text-violet-500">Hi</div>;
 }

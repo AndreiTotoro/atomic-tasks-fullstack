@@ -72,6 +72,8 @@ export async function POST(req: Request) {
       tasks: [],
     };
 
+    console.log(user);
+
     const newUser = await createUser(user);
 
     if (newUser) {

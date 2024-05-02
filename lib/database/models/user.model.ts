@@ -18,8 +18,8 @@ const UserSchema = new Schema({
   username: { type: String, required: true, unique: true },
   totalPoints: { type: Number, default: 0 },
   currentStreak: { type: Number, default: 0 },
-  taskOfTheDay: { type: Schema.Types.ObjectId, ref: "Task" },
-  tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
+  taskOfTheDay: { type: Schema.Types.ObjectId, ref: "Task" || null },
+  tasks: [{ type: Schema.Types.ObjectId, ref: "Task" } || []],
 });
 
 const User = models.User || model("User", UserSchema);

@@ -18,7 +18,7 @@ export const connectToDatabase = async () => {
   cached.promise =
     cached.promise ||
     mongoose.connect(MONGODB_URI, {
-      dbName: "vortex-events",
+      dbName: "atomic-to-do",
       bufferCommands: false,
     });
 
