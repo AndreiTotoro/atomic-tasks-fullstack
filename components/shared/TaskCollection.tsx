@@ -1,16 +1,24 @@
+"use client";
 import {
   getUncompletedTasks,
   setTaskCompleted,
 } from "@/lib/actions/task.actions";
 import { ITask } from "@/lib/database/models/task-model";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../ui/button";
 import CompleteTaskButton from "./CompleteTaskButton";
+import useUncompletedTaskStore from "@/store/useUncompletedTaskStore";
 
-export default async function TaskCollection({ userId }: { userId: string }) {
-  const uncompletedTasks = await getUncompletedTasks(userId);
+export default function TaskCollection({ userId }: { userId: string }) {
+  const { uncompletedTasks, setUncompletedTasks } = useUncompletedTaskStore();
 
-  console.log(uncompletedTasks);
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const tasks = await getUncompletedTasks(userId);
+      setUncompletedTasks(tasks);
+    };
+    fetchTasks();
+  }, []);
 
   return (
     <div className="h-[800px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">

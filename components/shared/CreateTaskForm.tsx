@@ -19,6 +19,7 @@ import { useAuth } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { createTask } from "@/lib/actions/task.actions";
 import { useRouter } from "next/navigation";
+import useUncompletedTaskStore from "@/store/useUncompletedTaskStore";
 
 const formSchema = z.object({
   taskName: z
@@ -37,6 +38,8 @@ export function CreateTaskForm({
   userId: string;
   type: "create" | "update";
 }) {
+  const { uncompletedTasks, setUncompletedTasks } = useUncompletedTaskStore();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,6 +55,7 @@ export function CreateTaskForm({
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     createTask(userId, values);
+
     form.reset();
   }
 
