@@ -17,7 +17,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
           uncompletedTasks.map((task: ITask) => {
             return (
               <div
-                key={task.id}
+                key={task._id}
                 className="flex justify-between items-center p-5 bg-neutral-500/40 rounded-lg mt-5"
               >
                 <div>
