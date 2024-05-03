@@ -30,3 +30,15 @@ export async function getUncompletedTasks(userId: string) {
     console.log(error);
   }
 }
+
+export async function setTaskCompleted(taskId: string) {
+  await connectToDatabase();
+  try {
+    const task = await Task.findById(taskId);
+    if (!task) throw new Error("Task not found");
+    task.completed = true;
+    await task.save();
+  } catch (error) {
+    console.log(error);
+  }
+}
