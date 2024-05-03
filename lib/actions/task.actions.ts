@@ -20,3 +20,13 @@ export async function createTask(userId: string, data: CreateTaskParams) {
     console.log(error);
   }
 }
+
+export async function getUncompletedTasks(userId: string) {
+  await connectToDatabase();
+  try {
+    const tasks = await Task.find({ creator: userId, completed: false });
+    return JSON.parse(JSON.stringify(tasks));
+  } catch (error) {
+    console.log(error);
+  }
+}
