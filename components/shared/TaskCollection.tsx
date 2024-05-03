@@ -1,6 +1,7 @@
 import { getUncompletedTasks } from "@/lib/actions/task.actions";
 import { ITask } from "@/lib/database/models/task-model";
 import React from "react";
+import { Button } from "../ui/button";
 
 export default async function TaskCollection({ userId }: { userId: string }) {
   const uncompletedTasks = await getUncompletedTasks(userId);
@@ -8,7 +9,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
   console.log(uncompletedTasks);
 
   return (
-    <div className="h-[500px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
+    <div className="h-[800px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl text-white">Your tasks</h1>
       <div>
         {uncompletedTasks.length === 0 ? (
@@ -25,7 +26,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
                   <p className="text-white">{task.description}</p>
                 </div>
                 <div>
-                  <button className="text-white">Complete</button>
+                  <Button>Complete</Button>
                 </div>
               </div>
             );

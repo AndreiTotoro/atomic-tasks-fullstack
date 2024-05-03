@@ -18,6 +18,7 @@ import { Checkbox } from "../ui/checkbox";
 import { useAuth } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { createTask } from "@/lib/actions/task.actions";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   taskName: z
@@ -46,6 +47,7 @@ export function CreateTaskForm({
     },
   });
 
+  const router = useRouter();
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
