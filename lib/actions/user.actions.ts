@@ -18,20 +18,6 @@ export async function createUser(user: CreateUserParams) {
   }
 }
 
-export async function createDummyUser() {
-  try {
-    await connectToDatabase();
-
-    const user = {
-      clerkId: "dummy",
-      email: "",
-    };
-    const newUser = await User.create(user);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 export async function getUserById(userId: string) {
   try {
     await connectToDatabase();
