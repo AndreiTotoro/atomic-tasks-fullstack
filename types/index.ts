@@ -7,3 +7,9 @@ export type CreateUserParams = {
   taskOfTheDay: null;
   tasks: [];
 };
+
+export type CreateTaskParams = {
+  taskName: string;
+  taskDescription: string;
+  isTaskOfTheDay: boolean;
+};

@@ -15,6 +15,9 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
+import { useAuth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { createTask } from "@/lib/actions/task.actions";
 
 const formSchema = z.object({
   taskName: z
@@ -26,7 +29,13 @@ const formSchema = z.object({
   isTaskOfTheDay: z.boolean(),
 });
 
-export function CreateTaskForm() {
+export function CreateTaskForm({
+  userId,
+  type,
+}: {
+  userId: string;
+  type: "create" | "update";
+}) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,9 +48,9 @@ export function CreateTaskForm() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
+    createTask(userId, values);
+    form.reset();
   }
 
   return (
@@ -111,7 +120,13 @@ export function CreateTaskForm() {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+
+          <Button
+            disabled={form.formState.isSubmitting}
+            type="submit"
+          >
+            {form.formState.isSubmitting ? "Submitting..." : "Submit"}
+          </Button>
         </form>
       </Form>
     </div>
