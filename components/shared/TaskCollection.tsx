@@ -12,8 +12,10 @@ export default async function TaskCollection({ userId }: { userId: string }) {
   const uncompletedTasks = await getUncompletedTasks(userId);
 
   return (
-    <div className=" lg:h-[600px] max-h-[600px] w-full overflow-y-auto  rounded-lg p-5 bg-neutral-500/20">
-      <h1 className="font-bold text-center text-xl text-white">Your tasks</h1>
+    <div className=" lg:h-[605px] max-h-[605px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
+      <h1 className="font-bold text-center text-xl mb-5 text-white">
+        Your tasks
+      </h1>
       <CreateTaskDrawer userId={userId} />
       <div>
         {uncompletedTasks?.length === 0 ? (
@@ -25,7 +27,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
             return (
               <div
                 key={task?._id}
-                className="flex justify-between gap-2 items-center p-5 bg-neutral-500/40 rounded-lg mt-5"
+                className="flex justify-between gap-2 items-center    p-5 bg-neutral-500/40 rounded-lg mt-5"
               >
                 <div className="overflow-ellipsis overflow-hidden">
                   <h1 className="text-white font-bold">{task?.title}</h1>
