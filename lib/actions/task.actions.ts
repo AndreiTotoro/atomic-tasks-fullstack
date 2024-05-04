@@ -2,7 +2,7 @@
 
 import { CreateTaskParams } from "@/types";
 import { connectToDatabase } from "../database";
-import User from "../database/models/user.model";
+import User, { IUser } from "../database/models/user.model";
 import Task, { ITask } from "../database/models/task-model";
 
 export async function createTask(userId: string, data: CreateTaskParams) {
@@ -10,11 +10,18 @@ export async function createTask(userId: string, data: CreateTaskParams) {
   try {
     const user = await User.findById(userId);
     if (!user) throw new Error("User not found");
+
     const task: ITask = await Task.create({
       title: data.taskName,
       description: data.taskDescription,
       creator: user._id,
     });
+
+    if (data.isTaskOfTheDay) {
+      user.taskOfTheDay = task._id;
+      await user.save();
+    }
+
     console.log(task);
   } catch (error) {
     console.log(error);

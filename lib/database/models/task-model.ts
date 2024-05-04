@@ -1,25 +1,24 @@
-import { model, models, Schema } from "mongoose";
+import { model, models, Schema, Document } from "mongoose";
 import { IUser } from "./user.model";
 
-export interface ITask {
-  _id: string;
+export interface ITask extends Document {
   title: string;
   description: string;
   createdAt: Date;
-  dueDate: Date;
+  dueDate?: Date;
   completed: boolean;
-  creator: IUser;
+  creator: IUser | Schema.Types.ObjectId;
 }
 
-const TaskSchema = new Schema({
+const TaskSchema = new Schema<ITask>({
   title: { type: String, required: true },
   description: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  dueDate: { type: Date, required: false },
+  dueDate: { type: Date },
   completed: { type: Boolean, default: false },
   creator: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-const Task = models.Task || model("Task", TaskSchema);
+const Task = models.Task || model<ITask>("Task", TaskSchema);
 
 export default Task;
