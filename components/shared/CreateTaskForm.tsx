@@ -65,7 +65,7 @@ export function CreateTaskForm({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 pt-5"
+          className="space-y-8 pt-5 "
         >
           <FormField
             control={form.control}
@@ -75,6 +75,7 @@ export function CreateTaskForm({
                 <FormLabel>Task Name</FormLabel>
                 <FormControl>
                   <Input
+                    className="text-neutral-800"
                     type="text"
                     placeholder="task name"
                     {...field}
@@ -93,6 +94,7 @@ export function CreateTaskForm({
                 <FormLabel>Task Description</FormLabel>
                 <FormControl>
                   <Input
+                    className="text-neutral-800"
                     type="text"
                     placeholder="task description"
                     {...field}
@@ -108,15 +110,15 @@ export function CreateTaskForm({
             name="isTaskOfTheDay"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Is task of the day?</FormLabel>
                 <FormControl>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center gap-2 space-x-2">
                     <Checkbox
                       id="isTaskOfTheDay"
                       checked={field.value}
                       className="mr-2 h-5 w-5 border-2 border-primary-500"
                       onCheckedChange={field.onChange}
                     />
+                    Is task of the day?
                   </div>
                 </FormControl>
 
