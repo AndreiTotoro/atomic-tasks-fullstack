@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 
-export default async function UsersLeaderboard() {
+export default async function UsersLeaderboard({ userId }: { userId: string }) {
   const users = await getUsers();
 
   return (
@@ -32,7 +32,11 @@ export default async function UsersLeaderboard() {
           {users.map((user: IUser) => {
             return (
               <TableRow key={user?._id}>
-                <TableCell className="text-white font-bold">
+                <TableCell
+                  className={`${
+                    userId === user?._id ? "text-violet-500" : "text-white"
+                  } font-bold`}
+                >
                   {user?.username}
                 </TableCell>
                 <TableCell className="text-white">

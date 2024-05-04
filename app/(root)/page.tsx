@@ -22,7 +22,7 @@ export default async function page() {
         </div>
 
         <div className="flex w-full lg:w-3/12 flex-col gap-5">
-          <UsersLeaderboard />
+          <UsersLeaderboard userId={userId} />
         </div>
       </SignedIn>
       <SignedOut>
