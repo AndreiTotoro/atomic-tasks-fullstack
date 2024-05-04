@@ -16,10 +16,12 @@ export default async function TaskCollection({ userId }: { userId: string }) {
       <h1 className="font-bold text-center text-xl mb-5 text-white">
         Your tasks
       </h1>
-      <CreateTaskDrawer userId={userId} />
+      <div className="w-full mx-auto">
+        <CreateTaskDrawer userId={userId} />
+      </div>
       <div>
         {uncompletedTasks?.length === 0 ? (
-          <h1 className="text-white text-xl text-center pt-24">
+          <h1 className="text-white text-xl text-center pt-5 lg:pt-24">
             You currently don't have any tasks. Consider adding some!
           </h1>
         ) : (

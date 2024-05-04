@@ -23,10 +23,10 @@ export default function CreateTaskDrawer({ userId }: { userId: string }) {
       onOpenChange={setOpen}
       open={open}
     >
-      <DrawerTrigger>
+      <DrawerTrigger className="w-full lg:w-auto">
         <div
           onClick={() => setOpen(true)}
-          className="flex gap-1 w-full mx-auto border-2 text-neutral-100 items-center font-medium p-2 px-3 rounded-md text-sm"
+          className="flex gap-1  border-2 text-neutral-100 items-center font-medium p-2 px-3 rounded-md text-sm"
         >
           <IoCreateOutline size={"1.5em"} />
           Add new task
