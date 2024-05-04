@@ -1,5 +1,6 @@
 import { CreateTaskForm } from "@/components/shared/CreateTaskForm";
 import TaskCollection from "@/components/shared/TaskCollection";
+import TaskOfTheDaySection from "@/components/shared/TaskOfTheDaySection";
 import { createUser } from "@/lib/actions/user.actions";
 import { CreateUserParams } from "@/types";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
@@ -15,10 +16,13 @@ export default async function page() {
     <div className="flex w-full gap-10 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
       <SignedIn>
         <TaskCollection userId={userId} />
-        <CreateTaskForm
-          userId={userId}
-          type="create"
-        />
+        <div className="flex w-full lg:w-1/2 flex-col gap-5">
+          <TaskOfTheDaySection userId={userId} />
+          <CreateTaskForm
+            userId={userId}
+            type="create"
+          />
+        </div>
       </SignedIn>
       <SignedOut>
         <div className="flex pt-36 w-full justify-center">

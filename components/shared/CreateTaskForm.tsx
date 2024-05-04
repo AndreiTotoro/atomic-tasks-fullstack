@@ -58,7 +58,7 @@ export function CreateTaskForm({
   }
 
   return (
-    <div className="w-full h-[500px] lg:w-1/2 bg-neutral-500/20 p-5 rounded-md">
+    <div className="w-full h-[500px]  bg-neutral-500/20 p-5 rounded-md">
       <h1 className="text-white text-center font-bold text-xl">
         Create new task
       </h1>
