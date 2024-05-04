@@ -68,3 +68,13 @@ export async function deleteUser(clerkId: string) {
     console.log(error);
   }
 }
+
+export async function getUsers() {
+  await connectToDatabase();
+  try {
+    const users = await User.find();
+    return JSON.parse(JSON.stringify(users));
+  } catch (error) {
+    console.log(error);
+  }
+}
