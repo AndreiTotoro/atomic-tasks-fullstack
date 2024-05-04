@@ -13,7 +13,7 @@ export default async function page() {
   const userId = sessionClaims?.userId as string;
 
   return (
-    <div className="flex w-full gap-10 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
+    <div className="flex w-full gap-5 lg:gap-10 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
       <SignedIn>
         <TaskCollection userId={userId} />
         <div className="flex w-full lg:w-1/2 flex-col gap-5">
