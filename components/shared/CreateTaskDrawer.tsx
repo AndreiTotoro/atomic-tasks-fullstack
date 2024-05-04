@@ -19,7 +19,10 @@ import { CreateTaskForm } from "./CreateTaskForm";
 export default function CreateTaskDrawer({ userId }: { userId: string }) {
   const [open, setOpen] = React.useState(false);
   return (
-    <Drawer open={open}>
+    <Drawer
+      onOpenChange={setOpen}
+      open={open}
+    >
       <DrawerTrigger>
         <div
           onClick={() => setOpen(true)}
