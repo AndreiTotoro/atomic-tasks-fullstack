@@ -11,7 +11,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
   const uncompletedTasks = await getUncompletedTasks(userId);
 
   return (
-    <div className="h-[800px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
+    <div className=" lg:h-[800px] max-h-[800px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl text-white">Your tasks</h1>
       <div>
         {uncompletedTasks?.length === 0 ? (

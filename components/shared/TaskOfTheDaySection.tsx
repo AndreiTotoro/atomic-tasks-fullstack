@@ -9,7 +9,7 @@ export default async function TaskOfTheDay({ userId }: { userId: string }) {
   console.log(taskOfTheDay);
 
   return (
-    <div className="h-[280px] w-full  rounded-lg p-5 bg-neutral-500/20">
+    <div className="lg:h-[280px] w-full  rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl text-white">
         Task of the day
       </h1>
