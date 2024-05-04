@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Drawer,
@@ -10,15 +11,20 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
+
 import TaskCollection from "./TaskCollection";
 import { IoCreateOutline } from "react-icons/io5";
 import { CreateTaskForm } from "./CreateTaskForm";
 
 export default function CreateTaskDrawer({ userId }: { userId: string }) {
+  const [open, setOpen] = React.useState(false);
   return (
-    <Drawer>
+    <Drawer open={open}>
       <DrawerTrigger>
-        <div className="flex gap-1 w-full mx-auto border-2 text-neutral-100 items-center font-medium p-2 px-3 rounded-md text-sm">
+        <div
+          onClick={() => setOpen(true)}
+          className="flex gap-1 w-full mx-auto border-2 text-neutral-100 items-center font-medium p-2 px-3 rounded-md text-sm"
+        >
           <IoCreateOutline size={"1.5em"} />
           Add new task
         </div>
@@ -26,6 +32,7 @@ export default function CreateTaskDrawer({ userId }: { userId: string }) {
       <DrawerContent className="bg-neutral-900 max-w-2xl mx-auto">
         <DrawerHeader>
           <CreateTaskForm
+            setOpen={setOpen}
             type="create"
             userId={userId}
           />

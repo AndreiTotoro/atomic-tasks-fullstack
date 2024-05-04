@@ -33,9 +33,11 @@ const formSchema = z.object({
 export function CreateTaskForm({
   userId,
   type,
+  setOpen,
 }: {
   userId: string;
   type: "create" | "update";
+  setOpen: (value: boolean) => void;
 }) {
   const router = useRouter();
 
@@ -54,6 +56,7 @@ export function CreateTaskForm({
     console.log(values);
     await createTask(userId, values);
     await form.reset();
+    setOpen(false);
     router.refresh();
   }
 
