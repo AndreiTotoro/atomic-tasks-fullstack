@@ -62,17 +62,20 @@ export async function setTaskCompleted(
   try {
     const task: ITask | null = await Task.findById(taskId);
     if (!task) throw new Error("Task not found");
+    const user: IUser | null = await User.findById(task.creator);
+    if (!user) throw new Error("User not found");
 
     task.completed = true;
 
-    await task.save();
-
     if (isTaskOfTheDay) {
-      const user: IUser | null = await User.findById(task.creator);
-      if (!user) throw new Error("User not found");
       user.taskOfTheDay = null;
-      await user.save();
+      user.totalPoints += 3;
+    } else {
+      user.totalPoints += 1;
     }
+
+    await task.save();
+    await user.save();
   } catch (error) {
     console.log(error);
   }

@@ -14,6 +14,16 @@ import React from "react";
 export default async function UsersLeaderboard({ userId }: { userId: string }) {
   const users = await getUsers();
 
+  const sortedUsers = users.sort((a: IUser, b: IUser) => {
+    if (a.totalPoints < b.totalPoints) {
+      return 1;
+    }
+    if (a.totalPoints > b.totalPoints) {
+      return -1;
+    }
+    return 0;
+  });
+
   return (
     <div className=" lg:h-[800px] max-h-[800px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl text-white">
