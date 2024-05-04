@@ -9,7 +9,7 @@ export default async function TaskOfTheDay({ userId }: { userId: string }) {
   console.log(taskOfTheDay);
 
   return (
-    <div className="w-full rounded-lg p-5 bg-neutral-500/20">
+    <div className="w-full h-[175px] rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold mb-5 text-center text-xl text-white">
         Task of the day
       </h1>
@@ -28,7 +28,7 @@ export default async function TaskOfTheDay({ userId }: { userId: string }) {
           </div>
         </div>
       ) : (
-        <h1 className="text-white text-xl text-center pt-24">
+        <h1 className="text-white text-xl text-center ">
           You currently don't have a task of the day. Consider adding one!
         </h1>
       )}

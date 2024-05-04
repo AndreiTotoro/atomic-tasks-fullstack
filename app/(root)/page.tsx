@@ -21,7 +21,7 @@ export default async function page() {
           <TaskCollection userId={userId} />
         </div>
 
-        <div className="flex w-full  flex-col gap-5">
+        <div className="flex w-full lg:w-3/12 flex-col gap-5">
           <UsersLeaderboard />
         </div>
       </SignedIn>
