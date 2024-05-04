@@ -1,7 +1,7 @@
-import { model, models, Schema } from "mongoose";
+import { Document, model, models, Schema } from "mongoose";
 import { ITask } from "./task-model";
 
-export interface IUser {
+export interface IUser extends Document {
   _id: string;
   clerkId: string;
   email: string;

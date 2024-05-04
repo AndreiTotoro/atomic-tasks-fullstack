@@ -8,7 +8,7 @@ import Task, { ITask } from "../database/models/task-model";
 export async function createTask(userId: string, data: CreateTaskParams) {
   await connectToDatabase();
   try {
-    const user = await User.findById(userId);
+    const user: IUser | null = await User.findById(userId);
     if (!user) throw new Error("User not found");
 
     const task: ITask = await Task.create({
