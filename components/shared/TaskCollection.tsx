@@ -6,13 +6,15 @@ import { ITask } from "@/lib/database/models/task-model";
 import React, { useEffect } from "react";
 import { Button } from "../ui/button";
 import CompleteTaskButton from "./CompleteTaskButton";
+import CreateTaskDrawer from "./CreateTaskDrawer";
 
 export default async function TaskCollection({ userId }: { userId: string }) {
   const uncompletedTasks = await getUncompletedTasks(userId);
 
   return (
-    <div className=" lg:h-[600px] max-h-[600px] w-full overflow-y-auto scrollbar-auto rounded-lg p-5 bg-neutral-500/20">
+    <div className=" lg:h-[600px] max-h-[600px] w-full overflow-y-auto  rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl text-white">Your tasks</h1>
+      <CreateTaskDrawer userId={userId} />
       <div>
         {uncompletedTasks?.length === 0 ? (
           <h1 className="text-white text-xl text-center pt-24">

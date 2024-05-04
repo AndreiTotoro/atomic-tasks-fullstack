@@ -58,7 +58,7 @@ export function CreateTaskForm({
   }
 
   return (
-    <div className="w-full h-[500px]  bg-neutral-500/20 p-5 rounded-md">
+    <div className="w-full rounded-md">
       <h1 className="text-white text-center font-bold text-xl">
         Create new task
       </h1>
@@ -124,13 +124,16 @@ export function CreateTaskForm({
               </FormItem>
             )}
           />
-
-          <Button
-            disabled={form.formState.isSubmitting}
-            type="submit"
-          >
-            {form.formState.isSubmitting ? "Submitting..." : "Submit"}
-          </Button>
+          <div className="w-full mx-auto">
+            <Button
+              className="w-full"
+              disabled={form.formState.isSubmitting}
+              type="submit"
+              variant={"secondary"}
+            >
+              {form.formState.isSubmitting ? "Creating..." : "Create"}
+            </Button>
+          </div>
         </form>
       </Form>
     </div>

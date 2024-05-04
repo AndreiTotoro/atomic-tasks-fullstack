@@ -20,12 +20,7 @@ export default async function page() {
           <TaskCollection userId={userId} />
         </div>
 
-        <div className="flex w-full  flex-col gap-5">
-          <CreateTaskForm
-            userId={userId}
-            type="create"
-          />
-        </div>
+        <div className="flex w-full  flex-col gap-5"></div>
       </SignedIn>
       <SignedOut>
         <div className="flex pt-36 w-full justify-center">
