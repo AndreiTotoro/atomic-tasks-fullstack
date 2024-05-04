@@ -9,16 +9,16 @@ export default async function TaskOfTheDay({ userId }: { userId: string }) {
   console.log(taskOfTheDay);
 
   return (
-    <div className="lg:h-[280px] w-full  rounded-lg p-5 bg-neutral-500/20">
-      <h1 className="font-bold text-center text-xl text-white">
+    <div className="w-full rounded-lg p-5 bg-neutral-500/20">
+      <h1 className="font-bold mb-5 text-center text-xl text-white">
         Task of the day
       </h1>
 
       {taskOfTheDay ? (
-        <div className="flex justify-between items-center p-5 bg-neutral-500/40 rounded-lg mt-16">
-          <div>
-            <h1 className="text-white font-bold">{taskOfTheDay.title}</h1>
-            <p className="text-white">{taskOfTheDay.description}</p>
+        <div className="flex gap-2 justify-between  items-center p-5 bg-neutral-500/40 rounded-lg ">
+          <div className="w-full overflow-ellipsis overflow-hidden">
+            <h1 className="text-white font-bold ">{taskOfTheDay.title}</h1>
+            <p className="text-white ">{taskOfTheDay.description}</p>
           </div>
           <div>
             <CompleteTaskButton

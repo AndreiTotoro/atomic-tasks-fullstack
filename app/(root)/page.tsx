@@ -13,11 +13,14 @@ export default async function page() {
   const userId = sessionClaims?.userId as string;
 
   return (
-    <div className="flex w-full gap-5 lg:gap-10 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
+    <div className="flex gap-5 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
       <SignedIn>
-        <TaskCollection userId={userId} />
-        <div className="flex w-full lg:w-1/2 flex-col gap-5">
+        <div className="w-full lg:w-9/12 flex flex-col gap-5">
           <TaskOfTheDaySection userId={userId} />
+          <TaskCollection userId={userId} />
+        </div>
+
+        <div className="flex w-full  flex-col gap-5">
           <CreateTaskForm
             userId={userId}
             type="create"
