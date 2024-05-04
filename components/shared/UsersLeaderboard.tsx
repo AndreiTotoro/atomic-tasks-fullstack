@@ -23,7 +23,8 @@ export default async function UsersLeaderboard() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Username</TableHead>
+            <TableHead>Username</TableHead>
+            <TableHead>Current Streak</TableHead>
             <TableHead className="text-right">Total Points</TableHead>
           </TableRow>
         </TableHeader>
@@ -33,6 +34,9 @@ export default async function UsersLeaderboard() {
               <TableRow key={user?._id}>
                 <TableCell className="text-white font-bold">
                   {user?.username}
+                </TableCell>
+                <TableCell className="text-white">
+                  {user?.currentStreak}
                 </TableCell>
                 <TableCell className="text-white text-right">
                   {user?.totalPoints}
