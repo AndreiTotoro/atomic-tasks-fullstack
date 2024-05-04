@@ -1,4 +1,3 @@
-"use client";
 import {
   getUncompletedTasks,
   setTaskCompleted,
@@ -7,24 +6,15 @@ import { ITask } from "@/lib/database/models/task-model";
 import React, { useEffect } from "react";
 import { Button } from "../ui/button";
 import CompleteTaskButton from "./CompleteTaskButton";
-import useUncompletedTaskStore from "@/store/useUncompletedTaskStore";
 
-export default function TaskCollection({ userId }: { userId: string }) {
-  const { uncompletedTasks, setUncompletedTasks } = useUncompletedTaskStore();
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      const tasks = await getUncompletedTasks(userId);
-      setUncompletedTasks(tasks);
-    };
-    fetchTasks();
-  }, []);
+export default async function TaskCollection({ userId }: { userId: string }) {
+  const uncompletedTasks = await getUncompletedTasks(userId);
 
   return (
     <div className="h-[800px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl text-white">Your tasks</h1>
       <div>
-        {uncompletedTasks.length === 0 ? (
+        {uncompletedTasks?.length === 0 ? (
           <h1 className="text-white text-xl text-center pt-24">
             You currently don't have any tasks. Consider adding some!
           </h1>
@@ -32,15 +22,15 @@ export default function TaskCollection({ userId }: { userId: string }) {
           uncompletedTasks.map((task: ITask) => {
             return (
               <div
-                key={task._id}
+                key={task?._id}
                 className="flex justify-between items-center p-5 bg-neutral-500/40 rounded-lg mt-5"
               >
                 <div>
-                  <h1 className="text-white font-bold">{task.title}</h1>
-                  <p className="text-white">{task.description}</p>
+                  <h1 className="text-white font-bold">{task?.title}</h1>
+                  <p className="text-white">{task?.description}</p>
                 </div>
                 <div>
-                  <CompleteTaskButton taskId={task._id} />
+                  <CompleteTaskButton taskId={task?._id} />
                 </div>
               </div>
             );

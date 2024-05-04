@@ -2,15 +2,14 @@
 import { setTaskCompleted } from "@/lib/actions/task.actions";
 import React from "react";
 import { Button } from "../ui/button";
-import useUncompletedTaskStore from "@/store/useUncompletedTaskStore";
+import { useRouter } from "next/navigation";
 
 export default function CompleteTaskButton({ taskId }: { taskId: string }) {
-  const { uncompletedTasks, setUncompletedTasks } = useUncompletedTaskStore();
+  const router = useRouter();
 
   const handleClick = async () => {
     await setTaskCompleted(taskId);
-    const updatedTasks = uncompletedTasks.filter((task) => task._id !== taskId);
-    setUncompletedTasks(updatedTasks);
+    router.refresh();
   };
 
   return <Button onClick={() => handleClick()}>Complete</Button>;

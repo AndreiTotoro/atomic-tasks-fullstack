@@ -1,3 +1,5 @@
+import { IUser } from "@/lib/database/models/user.model";
+
 export type CreateUserParams = {
   clerkId: string;
   email: string;
