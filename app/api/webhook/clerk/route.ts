@@ -71,6 +71,7 @@ export async function POST(req: Request) {
       taskOfTheDay: null,
       tasks: [],
       taskOfTheDayTimer: new Date(),
+      hasCompletedTaskOfTheDay: false,
     };
 
     console.log(user);

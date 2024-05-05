@@ -16,7 +16,13 @@ import TaskCollection from "./TaskCollection";
 import { IoCreateOutline } from "react-icons/io5";
 import { CreateTaskForm } from "./CreateTaskForm";
 
-export default function CreateTaskDrawer({ userId }: { userId: string }) {
+export default function CreateTaskDrawer({
+  userId,
+  hasUserCompletedTaskOfTheDay,
+}: {
+  userId: string;
+  hasUserCompletedTaskOfTheDay: boolean;
+}) {
   const [open, setOpen] = React.useState(false);
   return (
     <Drawer
@@ -35,6 +41,7 @@ export default function CreateTaskDrawer({ userId }: { userId: string }) {
       <DrawerContent className="bg-neutral-900 max-w-2xl mx-auto">
         <DrawerHeader>
           <CreateTaskForm
+            hasUserCompletedTaskOfTheDay={hasUserCompletedTaskOfTheDay}
             setOpen={setOpen}
             type="create"
             userId={userId}

@@ -10,6 +10,7 @@ export type CreateUserParams = {
   taskOfTheDay: null;
   tasks: [];
   taskOfTheDayTimer: Date;
+  hasCompletedTaskOfTheDay: boolean;
 };
 
 export type CreateTaskParams = {

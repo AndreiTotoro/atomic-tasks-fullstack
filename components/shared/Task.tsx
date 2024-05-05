@@ -3,7 +3,13 @@ import React from "react";
 import CompleteTaskButton from "./CompleteTaskButton";
 import DeleteTaskButton from "./DeleteTaskButton";
 
-export const Task = ({ task }: { task: ITask }) => {
+export const Task = ({
+  task,
+  isTaskOfTheDay = false,
+}: {
+  task: ITask;
+  isTaskOfTheDay: boolean;
+}) => {
   return (
     <div
       key={task?._id}
@@ -14,7 +20,10 @@ export const Task = ({ task }: { task: ITask }) => {
         <p className="text-white">{task?.description}</p>
       </div>
       <div className="flex gap-2">
-        <CompleteTaskButton taskId={task?._id} />
+        <CompleteTaskButton
+          taskId={task?._id}
+          isTaskOfTheDay={isTaskOfTheDay}
+        />
         <DeleteTaskButton taskId={task?._id} />
       </div>
     </div>

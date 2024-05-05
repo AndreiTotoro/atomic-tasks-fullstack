@@ -8,9 +8,13 @@ import { Button } from "../ui/button";
 import CompleteTaskButton from "./CompleteTaskButton";
 import CreateTaskDrawer from "./CreateTaskDrawer";
 import { Task } from "./Task";
+import { getHasUserCompletedTaskOfTheDay } from "@/lib/actions/user.actions";
 
 export default async function TaskCollection({ userId }: { userId: string }) {
   const uncompletedTasks = await getUncompletedTasks(userId);
+  const hasUserCompletedTaskOfTheDay = await getHasUserCompletedTaskOfTheDay(
+    userId
+  );
 
   return (
     <div className=" lg:h-[605px] max-h-[605px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
@@ -18,7 +22,10 @@ export default async function TaskCollection({ userId }: { userId: string }) {
         Your tasks
       </h1>
       <div className="w-full mx-auto">
-        <CreateTaskDrawer userId={userId} />
+        <CreateTaskDrawer
+          hasUserCompletedTaskOfTheDay={hasUserCompletedTaskOfTheDay ?? false}
+          userId={userId}
+        />
       </div>
       <div>
         {uncompletedTasks?.length === 0 ? (
@@ -29,6 +36,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
           uncompletedTasks.map((task: ITask) => {
             return (
               <Task
+                isTaskOfTheDay={false}
                 key={task._id}
                 task={task}
               />

@@ -11,6 +11,7 @@ export interface IUser extends Document {
   taskOfTheDay: ITask | null;
   tasks: ITask[] | [];
   taskOfTheDayTimer: Date;
+  hasCompletedTaskOfTheDay: boolean;
 }
 
 const UserSchema = new Schema({
@@ -22,6 +23,7 @@ const UserSchema = new Schema({
   taskOfTheDay: { type: Schema.Types.ObjectId, ref: "Task" || null },
   tasks: [{ type: Schema.Types.ObjectId, ref: "Task" } || []],
   taskOfTheDayTimer: { type: Date, default: Date.now },
+  hasCompletedTaskOfTheDay: { type: Boolean, required: true, default: false },
 });
 
 const User = models.User || model("User", UserSchema);

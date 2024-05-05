@@ -35,10 +35,12 @@ export function CreateTaskForm({
   userId,
   type,
   setOpen,
+  hasUserCompletedTaskOfTheDay,
 }: {
   userId: string;
   type: "create" | "update";
   setOpen: (value: boolean) => void;
+  hasUserCompletedTaskOfTheDay: boolean;
 }) {
   const router = useRouter();
 
@@ -117,13 +119,20 @@ export function CreateTaskForm({
               <FormItem>
                 <FormControl>
                   <div className="flex items-center gap-2 space-x-2">
-                    <Checkbox
-                      id="isTaskOfTheDay"
-                      checked={field.value}
-                      className="mr-2 h-5 w-5 border-2 border-primary-500"
-                      onCheckedChange={field.onChange}
-                    />
-                    Is task of the day?
+                    {!hasUserCompletedTaskOfTheDay && (
+                      <Checkbox
+                        id="isTaskOfTheDay"
+                        checked={field.value}
+                        className="mr-2 h-5 w-5 border-2 border-primary-500"
+                        onCheckedChange={field.onChange}
+                      />
+                    )}
+
+                    {hasUserCompletedTaskOfTheDay ? (
+                      <h1>You have already completed the task of the day!</h1>
+                    ) : (
+                      <h1>Make this task the task of the day</h1>
+                    )}
                   </div>
                 </FormControl>
 

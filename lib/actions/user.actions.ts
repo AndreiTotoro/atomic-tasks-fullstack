@@ -104,3 +104,14 @@ export async function getTaskOfTheDayTimer(userId: string) {
     console.log(error);
   }
 }
+
+export async function getHasUserCompletedTaskOfTheDay(userId: string) {
+  await connectToDatabase();
+  try {
+    const user: IUser | null = await User.findById(userId);
+    if (!user) throw new Error("User not found");
+    return user.hasCompletedTaskOfTheDay;
+  } catch (error) {
+    console.log(error);
+  }
+}
