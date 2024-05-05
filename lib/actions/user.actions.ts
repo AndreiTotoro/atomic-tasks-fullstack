@@ -90,6 +90,7 @@ export async function changeTaskOfTheDayTimer(userId: string) {
     if (user.hasCompletedTaskOfTheDay === false) {
       user.currentStreak = 0;
     }
+    user.taskOfTheDay = null;
     user.hasCompletedTaskOfTheDay = false;
     user.taskOfTheDayTimer = new Date(
       new Date().getTime() + 24 * 60 * 60 * 1000
