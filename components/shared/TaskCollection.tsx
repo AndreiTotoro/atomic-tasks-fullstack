@@ -17,7 +17,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
   );
 
   return (
-    <div className=" lg:h-[575px] max-h-[575px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
+    <div className=" lg:h-[535px] max-h-[535px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl mb-5 text-white">
         Your tasks
       </h1>

@@ -20,6 +20,7 @@ import { auth } from "@clerk/nextjs/server";
 import { createTask } from "@/lib/actions/task.actions";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
   taskName: z
@@ -100,9 +101,9 @@ export function CreateTaskForm({
               <FormItem>
                 <FormLabel>Task Description</FormLabel>
                 <FormControl>
-                  <Input
+                  <Textarea
                     className="text-neutral-800"
-                    type="text"
+                    type=""
                     placeholder="task description"
                     {...field}
                   />

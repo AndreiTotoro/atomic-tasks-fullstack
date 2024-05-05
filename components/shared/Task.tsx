@@ -2,6 +2,7 @@ import { ITask } from "@/lib/database/models/task-model";
 import React from "react";
 import CompleteTaskButton from "./CompleteTaskButton";
 import DeleteTaskButton from "./DeleteTaskButton";
+import PromoteToTaskOfTheDayButton from "./PromoteToTaskOfTheDayButton";
 
 export const Task = ({
   task,
@@ -10,6 +11,8 @@ export const Task = ({
   task: ITask;
   isTaskOfTheDay: boolean;
 }) => {
+  const userId = task?.creator;
+
   return (
     <div
       key={task?._id}
@@ -20,6 +23,10 @@ export const Task = ({
         <p className="text-white">{task?.description}</p>
       </div>
       <div className="flex gap-2">
+        <PromoteToTaskOfTheDayButton
+          taskId={task?._id}
+          userId={userId}
+        />
         <CompleteTaskButton
           taskId={task?._id}
           isTaskOfTheDay={isTaskOfTheDay}

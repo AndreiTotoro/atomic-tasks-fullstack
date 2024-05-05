@@ -4,6 +4,7 @@ import { CreateTaskParams } from "@/types";
 import { connectToDatabase } from "../database";
 import User, { IUser } from "../database/models/user.model";
 import Task, { ITask } from "../database/models/task-model";
+import { ObjectId } from "mongoose";
 
 export async function createTask(userId: string, data: CreateTaskParams) {
   await connectToDatabase();
@@ -89,6 +90,22 @@ export async function deleteTask(taskId: string) {
     const task: ITask | null = await Task.findById(taskId);
     if (!task) throw new Error("Task not found");
     await task.deleteOne();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function promoteTaskToTaskOfTheDay(
+  taskId: string,
+  userId: string
+) {
+  await connectToDatabase();
+  try {
+    const user: IUser | null = await User.findById(userId);
+    if (!user) throw new Error("User not found");
+
+    user.taskOfTheDay = taskId;
+    await user.save();
   } catch (error) {
     console.log(error);
   }
