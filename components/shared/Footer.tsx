@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col justify-center items-center h-16 pt-5 text-white">
+    <footer className="flex flex-col justify-center items-center  mt-8 text-white">
       <p>© 2024 Atomic Tasks</p>
       <br />
       <p>
