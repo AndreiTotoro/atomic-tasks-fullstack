@@ -25,7 +25,7 @@ export default async function UsersLeaderboard({ userId }: { userId: string }) {
   });
 
   return (
-    <div className=" lg:h-[800px] max-h-[800px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
+    <div className=" lg:h-[825px] max-h-[825px] w-full overflow-y-auto rounded-lg p-5 bg-neutral-500/20">
       <h1 className="font-bold text-center text-xl text-white">
         Users Leaderboard
       </h1>
