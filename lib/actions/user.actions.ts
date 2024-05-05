@@ -79,7 +79,7 @@ export async function getUsers() {
   }
 }
 
-export async function setTaskOfTheDayTimer(userId: string) {
+export async function changeTaskOfTheDayTimer(userId: string) {
   await connectToDatabase();
   try {
     const user: IUser | null = await User.findById(userId);
@@ -88,6 +88,7 @@ export async function setTaskOfTheDayTimer(userId: string) {
       new Date().getTime() + 24 * 60 * 60 * 1000
     );
     await user.save();
+    return user.taskOfTheDayTimer.getTime();
   } catch (error) {
     console.log(error);
   }
@@ -98,7 +99,7 @@ export async function getTaskOfTheDayTimer(userId: string) {
   try {
     const user: IUser | null = await User.findById(userId);
     if (!user) throw new Error("User not found");
-    return user.taskOfTheDayTimer;
+    return user.taskOfTheDayTimer.getTime();
   } catch (error) {
     console.log(error);
   }

@@ -16,8 +16,8 @@ export default async function page() {
 
   return (
     <div className="flex gap-5 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
-      <CountdownSection userId={userId} />
       <SignedIn>
+        <CountdownSection userId={userId} />
         <div className="w-full lg:w-4/6 flex flex-col gap-5">
           <TaskOfTheDaySection userId={userId} />
           <TaskCollection userId={userId} />
