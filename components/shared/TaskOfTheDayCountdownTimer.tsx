@@ -47,6 +47,7 @@ export default function TaskOfTheDayCountdownTimer({
       ) : (
         <div className="flex gap-1">
           <Countdown
+            key={taskOfTheDayTimer} // Add this line
             onComplete={onComplete}
             date={taskOfTheDayTimer}
           ></Countdown>
