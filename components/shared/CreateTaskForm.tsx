@@ -103,7 +103,6 @@ export function CreateTaskForm({
                 <FormControl>
                   <Textarea
                     className="text-neutral-800"
-                    type=""
                     placeholder="task description"
                     {...field}
                   />
