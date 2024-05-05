@@ -34,7 +34,7 @@ export default function CreateTaskDrawer({
           onClick={() => setOpen(true)}
           className="flex gap-1  border-2 text-neutral-100 bg-neutral-950  items-center font-medium p-2 px-3 rounded-md text-sm"
         >
-          <IoCreateOutline size={"1.5em"} />
+          <IoCreateOutline size={"1.45em"} />
           Add new task
         </div>
       </DrawerTrigger>
