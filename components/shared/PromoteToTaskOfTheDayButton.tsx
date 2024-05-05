@@ -9,15 +9,18 @@ import {
   deleteTask,
   promoteTaskToTaskOfTheDay,
 } from "@/lib/actions/task.actions";
+import { ObjectId } from "mongoose";
 
 export default function PromoteToTaskOfTheDayButton({
   taskId,
   isTaskOfTheDay = false,
   userId,
+  hasUserCompletedTaskOfTheDay,
 }: {
   taskId: string;
   isTaskOfTheDay?: boolean;
   userId: string;
+  hasUserCompletedTaskOfTheDay: boolean;
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -33,7 +36,7 @@ export default function PromoteToTaskOfTheDayButton({
   return (
     <Button
       onClick={handleClick}
-      disabled={isLoading}
+      disabled={hasUserCompletedTaskOfTheDay || isLoading}
     >
       {isLoading ? "Loading..." : <FaCrown />}
     </Button>

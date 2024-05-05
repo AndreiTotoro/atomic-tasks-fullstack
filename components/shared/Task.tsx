@@ -3,15 +3,20 @@ import React from "react";
 import CompleteTaskButton from "./CompleteTaskButton";
 import DeleteTaskButton from "./DeleteTaskButton";
 import PromoteToTaskOfTheDayButton from "./PromoteToTaskOfTheDayButton";
+import { getHasUserCompletedTaskOfTheDay } from "@/lib/actions/user.actions";
 
-export const Task = ({
+export const Task = async ({
   task,
   isTaskOfTheDay = false,
 }: {
   task: ITask;
   isTaskOfTheDay: boolean;
 }) => {
-  const userId = task?.creator;
+  //to string
+  const userId: string = task?.creator?.toString();
+  const hasUserCompletedTaskOfTheDay = await getHasUserCompletedTaskOfTheDay(
+    userId
+  );
 
   return (
     <div
@@ -24,6 +29,7 @@ export const Task = ({
       </div>
       <div className="flex gap-2">
         <PromoteToTaskOfTheDayButton
+          hasUserCompletedTaskOfTheDay={hasUserCompletedTaskOfTheDay ?? false}
           taskId={task?._id}
           userId={userId}
         />
