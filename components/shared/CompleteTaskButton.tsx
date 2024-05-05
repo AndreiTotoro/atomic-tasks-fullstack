@@ -35,14 +35,12 @@ export default function CompleteTaskButton({
   return (
     <TooltipProvider>
       <Tooltip delayDuration={200}>
-        <TooltipTrigger>
-          {" "}
-          <Button
-            onClick={handleClick}
-            disabled={isLoading}
-          >
-            {isLoading ? "Loading..." : <FaCheck />}
-          </Button>
+        <TooltipTrigger
+          className="text-white bg-neutral-900 p-3 rounded-md"
+          onClick={handleClick}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : <FaCheck />}
         </TooltipTrigger>
         <TooltipContent>
           <p>Mark task as completed</p>

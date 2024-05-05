@@ -35,15 +35,13 @@ export default function DemoteTaskOfTheDayButton({
 
   return (
     <TooltipProvider>
-      <Tooltip delayDuration={300}>
-        <TooltipTrigger>
-          {" "}
-          <Button
-            onClick={handleClick}
-            disabled={isLoading}
-          >
-            {isLoading ? "Loading..." : <HiTrendingDown />}
-          </Button>
+      <Tooltip delayDuration={200}>
+        <TooltipTrigger
+          className="text-white bg-neutral-900 p-3 rounded-md"
+          onClick={handleClick}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : <HiTrendingDown />}
         </TooltipTrigger>
         <TooltipContent>
           <p>Demote task from being the task of the day!</p>

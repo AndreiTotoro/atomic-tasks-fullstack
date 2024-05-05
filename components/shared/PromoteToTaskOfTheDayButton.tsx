@@ -42,13 +42,12 @@ export default function PromoteToTaskOfTheDayButton({
   return (
     <TooltipProvider>
       <Tooltip delayDuration={200}>
-        <TooltipTrigger>
-          <Button
-            onClick={handleClick}
-            disabled={hasUserCompletedTaskOfTheDay || isLoading}
-          >
-            {isLoading ? "Loading..." : <FaCrown />}
-          </Button>
+        <TooltipTrigger
+          className="text-white bg-neutral-900 p-3 rounded-md"
+          onClick={handleClick}
+          disabled={hasUserCompletedTaskOfTheDay || isLoading}
+        >
+          {isLoading ? "Loading..." : <FaCrown />}
         </TooltipTrigger>
         <TooltipContent>
           <p>Promote to task of the day!</p>

@@ -34,13 +34,12 @@ export default function DeleteTaskButton({
   return (
     <TooltipProvider>
       <Tooltip delayDuration={200}>
-        <TooltipTrigger>
-          <Button
-            onClick={handleClick}
-            disabled={isLoading}
-          >
-            {isLoading ? "Loading..." : <FaRegTrashAlt />}
-          </Button>
+        <TooltipTrigger
+          className="text-white bg-neutral-900 p-3 rounded-md"
+          onClick={handleClick}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : <FaRegTrashAlt />}
         </TooltipTrigger>
         <TooltipContent>
           <p>Delete task</p>
