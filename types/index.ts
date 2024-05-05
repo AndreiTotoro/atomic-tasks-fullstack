@@ -1,3 +1,4 @@
+import { getTaskOfTheDayTimer } from "@/lib/actions/user.actions";
 import { IUser } from "@/lib/database/models/user.model";
 
 export type CreateUserParams = {
@@ -8,6 +9,7 @@ export type CreateUserParams = {
   currentStreak: number;
   taskOfTheDay: null;
   tasks: [];
+  taskOfTheDayTimer: Date;
 };
 
 export type CreateTaskParams = {

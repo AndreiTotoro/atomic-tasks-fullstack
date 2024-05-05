@@ -1,7 +1,8 @@
 import { getTaskOfTheDay } from "@/lib/actions/task.actions";
 import { ITask } from "@/lib/database/models/task-model";
 import React from "react";
-import CompleteTaskButton from "./CompleteTaskButton";
+
+import Countdown from "react-countdown";
 import { Task } from "./Task";
 
 export default async function TaskOfTheDay({ userId }: { userId: string }) {

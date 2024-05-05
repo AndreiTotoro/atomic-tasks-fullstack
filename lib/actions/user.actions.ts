@@ -78,3 +78,28 @@ export async function getUsers() {
     console.log(error);
   }
 }
+
+export async function setTaskOfTheDayTimer(userId: string) {
+  await connectToDatabase();
+  try {
+    const user: IUser | null = await User.findById(userId);
+    if (!user) throw new Error("User not found");
+    user.taskOfTheDayTimer = new Date(
+      new Date().getTime() + 24 * 60 * 60 * 1000
+    );
+    await user.save();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getTaskOfTheDayTimer(userId: string) {
+  await connectToDatabase();
+  try {
+    const user: IUser | null = await User.findById(userId);
+    if (!user) throw new Error("User not found");
+    return user.taskOfTheDayTimer;
+  } catch (error) {
+    console.log(error);
+  }
+}

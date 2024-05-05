@@ -70,6 +70,7 @@ export async function POST(req: Request) {
       username: username!,
       taskOfTheDay: null,
       tasks: [],
+      taskOfTheDayTimer: new Date(),
     };
 
     console.log(user);

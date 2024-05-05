@@ -10,6 +10,7 @@ export interface IUser extends Document {
   currentStreak: number;
   taskOfTheDay: ITask | null;
   tasks: ITask[] | [];
+  taskOfTheDayTimer: Date;
 }
 
 const UserSchema = new Schema({
@@ -20,6 +21,7 @@ const UserSchema = new Schema({
   currentStreak: { type: Number, default: 0 },
   taskOfTheDay: { type: Schema.Types.ObjectId, ref: "Task" || null },
   tasks: [{ type: Schema.Types.ObjectId, ref: "Task" } || []],
+  taskOfTheDayTimer: { type: Date, default: Date.now },
 });
 
 const User = models.User || model("User", UserSchema);
