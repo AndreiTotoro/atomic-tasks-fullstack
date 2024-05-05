@@ -80,3 +80,14 @@ export async function setTaskCompleted(
     console.log(error);
   }
 }
+
+export async function deleteTask(taskId: string) {
+  await connectToDatabase();
+  try {
+    const task: ITask | null = await Task.findById(taskId);
+    if (!task) throw new Error("Task not found");
+    await task.deleteOne();
+  } catch (error) {
+    console.log(error);
+  }
+}
