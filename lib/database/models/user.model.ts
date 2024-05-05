@@ -8,7 +8,7 @@ export interface IUser extends Document {
   username: string;
   totalPoints: number;
   currentStreak: number;
-  taskOfTheDay: ITask | null;
+  taskOfTheDay: ITask | null | string;
   tasks: ITask[] | [];
   taskOfTheDayTimer: Date;
   hasCompletedTaskOfTheDay: boolean;

@@ -89,7 +89,7 @@ export function CreateTaskForm({
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Give your task a description.</FormDescription>
+                <FormDescription>Give your task a name.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -107,7 +107,7 @@ export function CreateTaskForm({
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Give your task a name..</FormDescription>
+                <FormDescription>Give your task a description.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
