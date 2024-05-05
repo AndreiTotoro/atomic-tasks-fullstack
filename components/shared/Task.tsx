@@ -13,7 +13,7 @@ export const Task = ({
   return (
     <div
       key={task?._id}
-      className="flex justify-between gap-2 items-center    p-5 bg-neutral-500/40 rounded-lg "
+      className="flex justify-between gap-2 items-center    p-5 bg-neutral-950 rounded-lg "
     >
       <div className="overflow-ellipsis overflow-hidden">
         <h1 className="text-white font-bold">{task?.title}</h1>

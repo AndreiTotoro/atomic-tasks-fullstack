@@ -32,13 +32,13 @@ export default function CreateTaskDrawer({
       <DrawerTrigger className="w-full lg:w-auto">
         <div
           onClick={() => setOpen(true)}
-          className="flex gap-1  border-2 text-neutral-100 items-center font-medium p-2 px-3 rounded-md text-sm"
+          className="flex gap-1  border-2 text-neutral-100 bg-neutral-950 mt-5 items-center font-medium p-2 px-3 rounded-md text-sm"
         >
           <IoCreateOutline size={"1.5em"} />
           Add new task
         </div>
       </DrawerTrigger>
-      <DrawerContent className="bg-neutral-900 max-w-2xl mx-auto">
+      <DrawerContent className="bg-neutral-950 max-w-2xl mx-auto">
         <DrawerHeader>
           <CreateTaskForm
             hasUserCompletedTaskOfTheDay={hasUserCompletedTaskOfTheDay}
