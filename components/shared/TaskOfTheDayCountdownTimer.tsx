@@ -45,16 +45,17 @@ export default function TaskOfTheDayCountdownTimer({
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex gap-1">
+        <div className="text-center">
           <Countdown
+            className="font-bold"
             key={taskOfTheDayTimer} // Add this line
             onComplete={onComplete}
             date={taskOfTheDayTimer}
           ></Countdown>
           {hasUserCompletedTaskOfTheDay ? (
-            <h1>- left until you can complete a new one</h1>
+            <h1>Left until you can complete a new one</h1>
           ) : (
-            <h1>- left to complete your daily task!</h1>
+            <h1>Left to complete your daily task!</h1>
           )}
         </div>
       )}
