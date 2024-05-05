@@ -110,3 +110,16 @@ export async function promoteTaskToTaskOfTheDay(
     console.log(error);
   }
 }
+
+export async function demoteTaskOfTheDay(userId: string) {
+  await connectToDatabase();
+  try {
+    const user: IUser | null = await User.findById(userId);
+    if (!user) throw new Error("User not found");
+
+    user.taskOfTheDay = null;
+    await user.save();
+  } catch (error) {
+    console.log(error);
+  }
+}

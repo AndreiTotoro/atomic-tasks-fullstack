@@ -4,6 +4,7 @@ import CompleteTaskButton from "./CompleteTaskButton";
 import DeleteTaskButton from "./DeleteTaskButton";
 import PromoteToTaskOfTheDayButton from "./PromoteToTaskOfTheDayButton";
 import { getHasUserCompletedTaskOfTheDay } from "@/lib/actions/user.actions";
+import DemoteTaskOfTheDayButton from "./DemoteTaskOfTheDayButton";
 
 export const Task = async ({
   task,
@@ -28,11 +29,16 @@ export const Task = async ({
         <p className="text-white">{task?.description}</p>
       </div>
       <div className="flex gap-2">
-        <PromoteToTaskOfTheDayButton
-          hasUserCompletedTaskOfTheDay={hasUserCompletedTaskOfTheDay ?? false}
-          taskId={task?._id}
-          userId={userId}
-        />
+        {isTaskOfTheDay ? (
+          <DemoteTaskOfTheDayButton userId={userId} />
+        ) : (
+          <PromoteToTaskOfTheDayButton
+            hasUserCompletedTaskOfTheDay={hasUserCompletedTaskOfTheDay ?? false}
+            taskId={task?._id}
+            userId={userId}
+          />
+        )}
+
         <CompleteTaskButton
           taskId={task?._id}
           isTaskOfTheDay={isTaskOfTheDay}
