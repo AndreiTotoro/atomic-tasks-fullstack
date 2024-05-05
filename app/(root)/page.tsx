@@ -16,12 +16,12 @@ export default async function page() {
   return (
     <div className="flex gap-5 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
       <SignedIn>
-        <div className="w-full lg:w-9/12 flex flex-col gap-5">
+        <div className="w-full lg:w-4/6 flex flex-col gap-5">
           <TaskOfTheDaySection userId={userId} />
           <TaskCollection userId={userId} />
         </div>
 
-        <div className="flex w-full lg:w-3/12 flex-col gap-5">
+        <div className="flex w-full lg:w-2/6 flex-col gap-5">
           <UsersLeaderboard userId={userId} />
         </div>
       </SignedIn>
