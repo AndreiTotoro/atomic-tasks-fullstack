@@ -14,7 +14,7 @@ export default async function page() {
   const userId = sessionClaims?.userId as string;
 
   return (
-    <div className="flex gap-5 flex-col  lg:flex-row justify-between text-violet-500 mt-10">
+    <div className="flex gap-5 flex-col  lg:flex-row  text-violet-500 mt-10">
       <SignedIn>
         <div className="w-full lg:w-4/6 flex flex-col gap-5">
           <TaskOfTheDaySection userId={userId} />
@@ -29,7 +29,7 @@ export default async function page() {
         <div className="flex pt-36 w-full justify-center">
           <div>
             <h1 className="text-2xl text-white font-bold">
-              Welcome to Atomic To-Do
+              Welcome to Atomic Tasks!
             </h1>
             <p className="text-lg mt-5 text-white">
               Please sign in to start creating tasks.

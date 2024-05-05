@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <div className="flex justify-between">
-      <h1 className="font-black text-2xl">Atomic To-Do</h1>
+      <h1 className="font-black text-2xl">Atomic Tasks</h1>
       <SignedIn>
         <UserButton />
       </SignedIn>
