@@ -9,7 +9,13 @@ import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 import { toast } from "sonner";
 
-export default function CountdownSection({ userId }: { userId: string }) {
+export default function TaskOfTheDayCountdownTimer({
+  userId,
+  hasUserCompletedTaskOfTheDay,
+}: {
+  hasUserCompletedTaskOfTheDay: boolean;
+  userId: string;
+}) {
   const [taskOfTheDayTimer, setTaskOfTheDayTimer] = useState<
     number | undefined
   >(0);
@@ -39,10 +45,17 @@ export default function CountdownSection({ userId }: { userId: string }) {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <Countdown
-          onComplete={onComplete}
-          date={taskOfTheDayTimer}
-        ></Countdown>
+        <div className="flex gap-1">
+          <Countdown
+            onComplete={onComplete}
+            date={taskOfTheDayTimer}
+          ></Countdown>
+          {hasUserCompletedTaskOfTheDay ? (
+            <h1>- left until you can complete a new one</h1>
+          ) : (
+            <h1>- left to complete your daily task!</h1>
+          )}
+        </div>
       )}
     </div>
   );

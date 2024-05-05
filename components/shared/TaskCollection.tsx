@@ -27,7 +27,7 @@ export default async function TaskCollection({ userId }: { userId: string }) {
           userId={userId}
         />
       </div>
-      <div>
+      <div className="flex flex-col gap-5 pt-5">
         {uncompletedTasks?.length === 0 ? (
           <h1 className="text-white text-xl text-center pt-5 lg:pt-24">
             You currently don't have any tasks. Consider adding some!

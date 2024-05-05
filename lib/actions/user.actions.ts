@@ -84,6 +84,13 @@ export async function changeTaskOfTheDayTimer(userId: string) {
   try {
     const user: IUser | null = await User.findById(userId);
     if (!user) throw new Error("User not found");
+    if (user.taskOfTheDayTimer.getTime() > new Date().getTime()) {
+      return user.taskOfTheDayTimer.getTime();
+    }
+    if (user.hasCompletedTaskOfTheDay === false) {
+      user.currentStreak = 0;
+    }
+    user.hasCompletedTaskOfTheDay = false;
     user.taskOfTheDayTimer = new Date(
       new Date().getTime() + 24 * 60 * 60 * 1000
     );

@@ -70,6 +70,7 @@ export async function setTaskCompleted(
     if (isTaskOfTheDay) {
       user.taskOfTheDay = null;
       user.totalPoints += 3;
+      user.currentStreak += 1;
       user.hasCompletedTaskOfTheDay = true;
     } else {
       user.totalPoints += 1;
