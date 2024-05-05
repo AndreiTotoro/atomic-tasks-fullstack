@@ -19,6 +19,7 @@ import { useAuth } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { createTask } from "@/lib/actions/task.actions";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   taskName: z
@@ -58,6 +59,7 @@ export function CreateTaskForm({
     await form.reset();
     setOpen(false);
     router.refresh();
+    toast.success("Task created successfully.");
   }
 
   return (

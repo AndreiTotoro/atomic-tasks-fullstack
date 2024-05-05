@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { setTaskCompleted } from "@/lib/actions/task.actions";
 import { Button } from "../ui/button";
+import { FaCheck } from "react-icons/fa";
+import { toast } from "sonner";
 
 export default function CompleteTaskButton({
   taskId,
@@ -19,6 +21,9 @@ export default function CompleteTaskButton({
     await setTaskCompleted(taskId, isTaskOfTheDay);
     setIsLoading(false);
     router.refresh();
+    isTaskOfTheDay
+      ? toast.success("Task of the day completed! You have gained 3 points!")
+      : toast.success("Task completed! You have gained 1 point!");
   };
 
   return (
@@ -26,7 +31,7 @@ export default function CompleteTaskButton({
       onClick={handleClick}
       disabled={isLoading}
     >
-      {isLoading ? "Loading..." : "Complete"}
+      {isLoading ? "Loading..." : <FaCheck />}
     </Button>
   );
 }
