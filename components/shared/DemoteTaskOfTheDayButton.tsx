@@ -10,6 +10,12 @@ import {
   demoteTaskOfTheDay,
   promoteTaskToTaskOfTheDay,
 } from "@/lib/actions/task.actions";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function DemoteTaskOfTheDayButton({
   userId,
@@ -28,11 +34,21 @@ export default function DemoteTaskOfTheDayButton({
   };
 
   return (
-    <Button
-      onClick={handleClick}
-      disabled={isLoading}
-    >
-      {isLoading ? "Loading..." : <HiTrendingDown />}
-    </Button>
+    <TooltipProvider>
+      <Tooltip delayDuration={300}>
+        <TooltipTrigger>
+          {" "}
+          <Button
+            onClick={handleClick}
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : <HiTrendingDown />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Demote task from being the task of the day!</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

@@ -5,6 +5,12 @@ import { setTaskCompleted } from "@/lib/actions/task.actions";
 import { Button } from "../ui/button";
 import { FaCheck } from "react-icons/fa";
 import { toast } from "sonner";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function CompleteTaskButton({
   taskId,
@@ -27,11 +33,21 @@ export default function CompleteTaskButton({
   };
 
   return (
-    <Button
-      onClick={handleClick}
-      disabled={isLoading}
-    >
-      {isLoading ? "Loading..." : <FaCheck />}
-    </Button>
+    <TooltipProvider>
+      <Tooltip delayDuration={200}>
+        <TooltipTrigger>
+          {" "}
+          <Button
+            onClick={handleClick}
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : <FaCheck />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Mark task as completed</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

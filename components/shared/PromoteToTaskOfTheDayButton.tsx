@@ -6,6 +6,12 @@ import { FaCheck } from "react-icons/fa";
 import { toast } from "sonner";
 import { FaCrown } from "react-icons/fa6";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
   deleteTask,
   promoteTaskToTaskOfTheDay,
 } from "@/lib/actions/task.actions";
@@ -34,11 +40,20 @@ export default function PromoteToTaskOfTheDayButton({
   };
 
   return (
-    <Button
-      onClick={handleClick}
-      disabled={hasUserCompletedTaskOfTheDay || isLoading}
-    >
-      {isLoading ? "Loading..." : <FaCrown />}
-    </Button>
+    <TooltipProvider>
+      <Tooltip delayDuration={200}>
+        <TooltipTrigger>
+          <Button
+            onClick={handleClick}
+            disabled={hasUserCompletedTaskOfTheDay || isLoading}
+          >
+            {isLoading ? "Loading..." : <FaCrown />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Promote to task of the day!</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

@@ -6,6 +6,12 @@ import { FaCheck } from "react-icons/fa";
 import { toast } from "sonner";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { deleteTask } from "@/lib/actions/task.actions";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function DeleteTaskButton({
   taskId,
@@ -26,11 +32,20 @@ export default function DeleteTaskButton({
   };
 
   return (
-    <Button
-      onClick={handleClick}
-      disabled={isLoading}
-    >
-      {isLoading ? "Loading..." : <FaRegTrashAlt />}
-    </Button>
+    <TooltipProvider>
+      <Tooltip delayDuration={200}>
+        <TooltipTrigger>
+          <Button
+            onClick={handleClick}
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : <FaRegTrashAlt />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Delete task</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }
